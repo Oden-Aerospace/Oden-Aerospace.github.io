@@ -1,6 +1,347 @@
-<!DOCTYPE html>
-<html>
-    <body>
-        Welcome to Oden Aerospace
-    </body>
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oden Aerospace — Mobile Simulator Training & Franchise Network</title>
+  <meta name="description" content="Oden Aerospace delivers mobile simulator-powered flight training to underserved markets through a franchise network and a unified scheduling & compliance platform." />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --border: #e2e8f0; /* slate-200 */
+      --accent: #0ea5e9; /* sky-500 */
+      --accent-dark: #0284c7; /* sky-600 */
+      --card: #f8fafc; /* slate-50 */
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: var(--bg); }
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+    /* Header */
+    .header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.9); backdrop-filter: saturate(180%) blur(6px); border-bottom: 1px solid var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { font-weight: 700; letter-spacing: .2px; }
+    .nav-links { display: none; gap: 20px; }
+    .nav-links a, .nav-links button { color: var(--text); text-decoration: none; font-size: 14px; background: none; border: 0; cursor: pointer; }
+    .cta-row { display: none; gap: 10px; }
+    .btn { padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border); background: #fff; font-size: 14px; cursor: pointer; }
+    .btn.primary { background: var(--text); color: #fff; border-color: var(--text); }
+    .btn.secondary { background: #fff; color: var(--text); }
+    .btn.primary:hover { background: #111827; }
+    .btn.secondary:hover { background: #f1f5f9; }
+    .menu { display: inline-flex; border: 1px solid var(--border); border-radius: 10px; padding: 8px 10px; background: #fff; }/* Sections */
+section { padding: 72px 0; }
+h1 { font-size: clamp(32px, 5vw, 48px); margin: 0 0 12px; }
+h2 { font-size: clamp(24px, 3.5vw, 32px); margin: 0 0 14px; }
+h3 { font-size: 18px; margin: 0 0 8px; }
+p { line-height: 1.6; color: var(--muted); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.grid-5 { display: grid; grid-template-columns: 1fr; gap: 12px; }
+
+.card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
+.card.alt { background: var(--card); }
+
+.hero { padding: 96px 0 72px; }
+.hero .img { height: 280px; border: 1px solid var(--border); border-radius: 18px; background: linear-gradient(135deg, #f1f5f9, #e2e8f0); display: grid; place-items: center; color: #64748b; }
+.trust { font-size: 12px; color: #64748b; margin-top: 10px; }
+
+.band { background: var(--text); color: #fff; }
+.band p { color: rgba(255,255,255,.85); }
+.band .card { border-color: rgba(255,255,255,.15); background: transparent; color: #fff; }
+
+.faq { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: #fff; }
+.faq-item { border-top: 1px solid var(--border); }
+.faq-item:first-child { border-top: 0; }
+.faq-btn { width: 100%; text-align: left; padding: 16px; background: none; border: 0; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-weight: 600; }
+.faq-a { padding: 0 16px 16px; color: var(--muted); display: none; }
+.faq-item.open .faq-a { display: block; }
+
+form .input, form select, form textarea { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; font-size: 14px; }
+form .row { display: grid; grid-template-columns: 1fr; gap: 12px; }
+form .actions { display: flex; gap: 10px; align-items: center; }
+.note { font-size: 12px; color: #64748b; }
+
+.footer { border-top: 1px solid var(--border); padding: 24px 0; font-size: 14px; }
+
+/* Responsive */
+@media (min-width: 768px) {
+  .nav-links { display: flex; }
+  .cta-row { display: flex; }
+  .menu { display: none; }
+  .grid-2 { grid-template-columns: 1.1fr .9fr; }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-5 { grid-template-columns: repeat(5, 1fr); }
+  .hero .img { height: 380px; }
+}
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container nav">
+      <div class="brand">Oden Aerospace</div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How It Works</a>
+        <a href="#why">Why Oden Aerospace</a>
+        <a href="#founders">Founder Franchisees</a>
+        <a href="#students">Students</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="cta-row">
+        <button class="btn primary" onclick="scrollToId('apply')">Apply to Launch</button>
+        <button class="btn secondary" onclick="scrollToId('waitlist')">Join Waitlist</button>
+      </div>
+      <button class="menu" aria-label="Open menu" onclick="toggleMobile()">☰</button>
+    </div>
+  </header>  <!-- Mobile menu -->  <div id="mobileMenu" style="display:none; border-bottom:1px solid var(--border);">
+    <div class="container" style="padding:12px 0; display:grid; gap:10px;">
+      <a href="#how" onclick="toggleMobile()">How It Works</a>
+      <a href="#why" onclick="toggleMobile()">Why Oden Aerospace</a>
+      <a href="#founders" onclick="toggleMobile()">Founder Franchisees</a>
+      <a href="#students" onclick="toggleMobile()">Students</a>
+      <a href="#faq" onclick="toggleMobile()">FAQ</a>
+      <div style="display:flex; gap:8px;">
+        <button class="btn primary" onclick="scrollToId('apply'); toggleMobile()">Apply to Launch</button>
+        <button class="btn secondary" onclick="scrollToId('waitlist'); toggleMobile()">Join Waitlist</button>
+      </div>
+    </div>
+  </div>  <!-- Hero -->  <section class="hero">
+    <div class="container grid-2">
+      <div>
+        <h1>Flight training, mobilized.</h1>
+        <p>Oden Aerospace delivers mobile training simulators to regions traditional flight schools don’t reach—powered by a unified scheduling and compliance platform.</p>
+        <div style="display:flex; gap:10px; margin-top:18px;">
+          <a class="btn primary" href="#apply">Apply to Launch a Territory</a>
+          <a class="btn secondary" href="#waitlist">Join the Student Waitlist</a>
+        </div>
+        <p class="trust">Built in alignment with FAA Advisory Circular 61‑136B. Partnering with certified BATD manufacturers.</p>
+      </div>
+      <div class="img" role="img" aria-label="Trailer-integrated simulator on location">
+        <div>
+          <div style="text-transform:uppercase; letter-spacing: .08em; font-size:12px;">Hero Placeholder</div>
+          <div style="font-size:12px; opacity:.7;">Trailer‑integrated simulator on location</div>
+        </div>
+      </div>
+    </div>
+  </section>  <!-- How It Works -->  <section id="how" style="background: var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <h2>How It Works</h2>
+      <div class="grid-3" style="margin-top:18px;">
+        <div class="card"><h3>Mobile Certified Simulator Platform</h3><p>Trailer‑integrated simulators deploy directly into underserved regions.</p></div>
+        <div class="card"><h3>Unified Operations</h3><p>Cloud platform for scheduling, compliance tracking, and performance monitoring.</p></div>
+        <div class="card"><h3>Local Access</h3><p>Students train closer to home while franchisees grow aviation opportunities.</p></div>
+      </div>
+    </div>
+  </section>  <!-- Why Oden Aerospace -->  <section id="why">
+    <div class="container">
+      <h2>Why Oden Aerospace</h2>
+      <div class="grid-5" style="margin-top:18px;">
+        <div class="card alt"><h3>Reach New Markets</h3><p>Extend training access where pilots live, not just near flight schools.</p></div>
+        <div class="card alt"><h3>Standardized Quality</h3><p>Platform‑driven SOPs and QA data ensure consistency.</p></div>
+        <div class="card alt"><h3>Faster Time to Revenue</h3><p>Playbooks accelerate franchise readiness and launches.</p></div>
+        <div class="card alt"><h3>Mentorship Pipeline</h3><p>DPE mentorship with local FSDOs expands examiner capacity.</p></div>
+        <div class="card alt"><h3>Partnership‑Ready</h3><p>Certified BATD manufacturer integration for long‑term growth.</p></div>
+      </div>
+    </div>
+  </section>  <!-- Founder Franchisees -->  <section id="founders" style="background: var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container grid-2">
+      <div>
+        <h2>Become a Founder Franchisee with Oden Aerospace</h2>
+        <ul style="margin-top:14px; color: var(--muted); line-height:1.7;">
+          <li>Exclusive territory rights during the first year</li>
+          <li>Priority listing on Oden Aerospace’s scheduling platform</li>
+          <li>Non‑certified simulators for early validation (exchangeable for certified units when available)</li>
+          <li>Standardized onboarding, training, and marketing kits</li>
+          <li>Data dashboards for utilization, NPS, and student completion rates</li>
+        </ul>
+        <div style="margin-top:16px;">
+          <a class="btn primary" href="#apply">Apply to Launch a Territory</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Founder Franchisee Benefits</h3>
+        <p>Year‑1 revenue is primarily founder‑franchise driven; platform KPIs guide continuous improvement.</p>
+        <p class="note">(Insert a founder quote or pilot testimonial here.)</p>
+      </div>
+    </div>
+  </section>  <!-- Students & Platform Features -->  <section id="students">
+    <div class="container grid-2">
+      <div>
+        <h2>Training Closer to Home</h2>
+        <p>Join the waitlist to be notified when Oden Aerospace’s mobile simulator arrives in your community. Training includes blended ground school and simulator‑based skills building, aligned with FAA training pathways.</p>
+        <div style="margin-top:14px;">
+          <a class="btn secondary" href="#waitlist">Join the Waitlist</a>
+        </div>
+      </div>
+      <div class="card alt">
+        <h3>Platform Features</h3>
+        <ul style="color: var(--muted); line-height:1.7;">
+          <li>Scheduling & instructor availability</li>
+          <li>Compliance logs & training records</li>
+          <li>Franchise dashboards (onboarding, NPS, completions)</li>
+          <li>Uptime & maintenance tracking</li>
+          <li>Secure, multi‑tenant architecture</li>
+        </ul>
+      </div>
+    </div>
+  </section>  <!-- Mentorship & Safety band -->  <section class="band">
+    <div class="container grid-2">
+      <div>
+        <h2>Mentorship & Safety</h2>
+        <p>The Oden Aerospace DPE mentorship program, launched in partnership with local FSDOs, expands examiner capacity and supports the next generation of aviation leaders.</p>
+      </div>
+      <div class="card">
+        <div class="note">Future partners</div>
+        <div class="note">(Logo strip placeholder)</div>
+      </div>
+    </div>
+  </section>  <!-- Social Proof -->  <section>
+    <div class="container">
+      <h2>What People Are Saying</h2>
+      <div class="grid-3" style="margin-top:14px;">
+        <div class="card"><p>“Short testimonial about the training experience and accessibility.”</p><p class="note">— Name, Role</p></div>
+        <div class="card"><p>“Mobile access brought training to our local pilots.”</p><p class="note">— Name, Role</p></div>
+        <div class="card"><p>“Fast setup, consistent quality, great support.”</p><p class="note">— Name, Role</p></div>
+      </div>
+    </div>
+  </section>  <!-- FAQ -->  <section id="faq" style="background: var(--card); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+    <div class="container">
+      <h2>FAQs</h2>
+      <div class="faq" id="faqList" style="margin-top:14px;">
+        <!-- Items injected by JS below -->
+      </div>
+    </div>
+  </section>  <!-- Lead capture -->  <section id="apply">
+    <div class="container grid-2">
+      <div class="card">
+        <h2>Apply to Launch an Oden Aerospace Territory</h2>
+        <form id="franchiseForm" class="form" novalidate>
+          <div class="row">
+            <input class="input" name="name" placeholder="Full name" aria-label="Full name" required />
+            <input class="input" name="email" type="email" placeholder="Email" aria-label="Email" required />
+            <input class="input" name="phone" type="tel" placeholder="Phone" aria-label="Phone" />
+            <input class="input" name="region" placeholder="City / Region" aria-label="City or region" />
+            <input class="input" name="background" placeholder="Aviation background" aria-label="Aviation background" />
+            <textarea class="input" name="why" placeholder="Why are you a great fit?" aria-label="Why you're a great fit" rows="5"></textarea>
+          </div>
+          <div class="actions" style="margin-top:12px;">
+            <button class="btn primary" type="submit">Submit Application</button>
+            <span class="note" id="franchiseMsg" role="status" aria-live="polite"></span>
+          </div>
+          <p class="note">By submitting, you agree to be contacted about franchise opportunities.</p>
+        </form>
+      </div><div id="waitlist" class="card">
+    <h2>Join the Oden Aerospace Student Waitlist</h2>
+    <form id="studentForm" class="form" novalidate>
+      <div class="row">
+        <input class="input" name="name" placeholder="Full name" aria-label="Full name" required />
+        <input class="input" name="email" type="email" placeholder="Email" aria-label="Email" required />
+        <input class="input" name="region" placeholder="City / Region" aria-label="City or region" />
+        <select class="input" name="interest" aria-label="Training interest">
+          <option value="">Training interest</option>
+          <option>Private Pilot (PPL)</option>
+          <option>Instrument</option>
+          <option>Other / Undecided</option>
+        </select>
+      </div>
+      <div class="actions" style="margin-top:12px;">
+        <button class="btn secondary" type="submit">Join Waitlist</button>
+        <span class="note" id="studentMsg" role="status" aria-live="polite"></span>
+      </div>
+      <p class="note">We’ll notify you when a mobile simulator is scheduled for your area.</p>
+    </form>
+  </div>
+</div>
+
+  </section>  <!-- Footer -->  <footer class="footer">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div>© 2025 Oden Aerospace. All rights reserved.</div>
+      <div style="display:flex; gap:16px;">
+        <a href="#">Contact</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </footer>  <script>
+    // Utility: smooth scroll to id
+    function scrollToId(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Mobile menu toggle
+    function toggleMobile() {
+      const m = document.getElementById('mobileMenu');
+      m.style.display = (m.style.display === 'none' || !m.style.display) ? 'block' : 'none';
+    }
+
+    // FAQs data
+    const FAQS = [
+      {
+        q: 'How is a mobile simulator different from a flight school?',
+        a: 'Oden Aerospace deploys trailer‑integrated simulators to underserved areas. We deliver standardized simulator‑based training and ground instruction locally, while aligning with FAA pathways for flight training.'
+      },
+      {
+        q: 'Are the simulators certified?',
+        a: 'Founder franchisees initially validate markets using non‑certified simulators (not for logging time/IPC). Certified BATD units are integrated via manufacturing partners as they become available.'
+      },
+      {
+        q: 'What does it take to become a founder franchisee?',
+        a: 'Aviation background, commitment to our purpose‑driven mission, territory focus, and readiness to launch with Oden Aerospace playbooks, platform onboarding, and QA standards.'
+      },
+      {
+        q: 'Which regions are launching first?',
+        a: 'We are prioritizing metropolitan areas with strong GA activity and underserved communities. Join the waitlist or apply to launch a territory to be notified first.'
+      },
+      {
+        q: 'How does the scheduling and compliance platform work?',
+        a: 'A cloud platform standardizes scheduling, training records, compliance logs, uptime/maintenance tracking, and performance dashboards across all franchise locations.'
+      }
+    ];
+
+    // Render FAQs
+    const faqList = document.getElementById('faqList');
+    FAQS.forEach((item, idx) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'faq-item';
+      const btn = document.createElement('button');
+      btn.className = 'faq-btn';
+      btn.setAttribute('aria-expanded', idx === 0 ? 'true' : 'false');
+      btn.innerHTML = `<span>${item.q}</span><span>${idx === 0 ? '–' : '+'}</span>`;
+      const ans = document.createElement('div');
+      ans.className = 'faq-a';
+      ans.textContent = item.a;
+      if (idx === 0) wrapper.classList.add('open');
+      btn.addEventListener('click', () => {
+        const open = wrapper.classList.toggle('open');
+        btn.querySelector('span:last-child').textContent = open ? '–' : '+';
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      wrapper.appendChild(btn);
+      wrapper.appendChild(ans);
+      faqList.appendChild(wrapper);
+    });
+
+    // Basic form handlers (demo only)
+    function handleForm(formId, msgId, successText) {
+      const form = document.getElementById(formId);
+      const msg = document.getElementById(msgId);
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // rudimentary validation
+        const valid = form.checkValidity();
+        if (!valid) { msg.textContent = 'Please fill in required fields.'; return; }
+        // Demo UX: pretend to submit
+        msg.textContent = 'Thanks! We\'ll be in touch.';
+        form.reset();
+      });
+    }
+    handleForm('franchiseForm', 'franchiseMsg', 'Thanks! We\'ll be in touch.');
+    handleForm('studentForm', 'studentMsg', 'You\'re on the list!');
+  </script></body>
 </html>
